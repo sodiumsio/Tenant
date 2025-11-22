@@ -357,7 +357,7 @@ $maintenance_properties = $property->getMaintenanceProperties()->rowCount();
                                                         </span>
                                                     </td>
                                                     <td>
-                                                        <strong class='text-success'>$" . number_format($row['rent_amount'], 2) . "</strong>
+                                                        <strong class='text-success'>ksh" . number_format($row['rent_amount'], 2) . "</strong>
                                                         <br><small class='text-muted'>per month</small>
                                                     </td>
                                                     <td>
@@ -591,4 +591,5 @@ $maintenance_properties = $property->getMaintenanceProperties()->rowCount();
         });
     </script>
 </body>
+
 </html>
