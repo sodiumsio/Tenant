@@ -1,5 +1,5 @@
 <?php
-// dashboard.php
+
 session_start();
 require_once "config/database.php";
 require_once "models/Property.php";
@@ -229,4 +229,5 @@ $pending_payments = $payment->getPendingPayments()->rowCount();
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
