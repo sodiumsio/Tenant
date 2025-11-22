@@ -1,5 +1,5 @@
 <?php
-// payment.php
+
 session_start();
 require_once "config/database.php";
 require_once "models/Property.php";
@@ -16,11 +16,11 @@ $property = new Property($db);
 $message = '';
 $message_type = '';
 
-// Handle form submissions
+
 if($_POST){
     try {
         if(isset($_POST['create_payment'])) {
-            // Validate required fields
+            
             $required_fields = ['tenant_id', 'property_id', 'amount', 'due_date', 'payment_method', 'status'];
             $missing_fields = [];
             
@@ -34,7 +34,7 @@ if($_POST){
                 $message = "Missing required fields: " . implode(', ', $missing_fields);
                 $message_type = "danger";
             } else {
-                // Assign values with null coalescing to prevent undefined key warnings
+                
                 $payment->tenant_id = $_POST['tenant_id'] ?? null;
                 $payment->property_id = $_POST['property_id'] ?? null;
                 $payment->amount = $_POST['amount'] ?? 0;
@@ -98,12 +98,12 @@ if($_POST){
     }
 }
 
-// Get payment statistics
+
 $total_revenue = $payment->getTotalRevenue();
 $pending_payments = $payment->getPendingPaymentsCount();
 $overdue_payments = $payment->getOverduePaymentsCount();
 
-// Get tenants for dropdown
+
 $tenants = $tenant->getActiveTenantsForPayments();
 $properties = $property->read();
 ?>
@@ -202,7 +202,7 @@ $properties = $property->read();
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Total Revenue</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">$<?php echo number_format($total_revenue, 2); ?></div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">Ksh<?php echo number_format($total_revenue, 2); ?></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -657,4 +657,5 @@ $properties = $property->read();
     });
 </script>
 </body>
+
 </html>
