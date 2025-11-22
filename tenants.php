@@ -1,5 +1,5 @@
 <?php
-// tenants.php
+
 session_start();
 require_once "config/database.php";
 require_once "models/Property.php";
@@ -14,7 +14,7 @@ $tenant = new Tenant($db);
 $message = '';
 $message_type = '';
 
-// Handle form submissions
+
 if($_POST){
     try {
         if(isset($_POST['create_tenant'])) {
@@ -74,7 +74,7 @@ if($_POST){
     }
 }
 
-// Get tenant statistics
+
 $total_tenants = $tenant->read()->rowCount();
 $active_tenants = $tenant->getActiveTenants()->rowCount();
 $vacant_properties = $property->getVacantProperties()->rowCount();
@@ -166,7 +166,7 @@ $vacant_properties = $property->getVacantProperties()->rowCount();
                 </div>
                 <?php endif; ?>
 
-                <!-- KPI Cards -->
+                <!--  Cards -->
                 <div class="row mb-4">
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card border-left-primary shadow h-100 py-2">
@@ -324,7 +324,7 @@ $vacant_properties = $property->getVacantProperties()->rowCount();
                                                 'pending' => 'warning'
                                             ];
                                             
-                                            // Check lease status for row styling
+                                            
                                             $lease_class = '';
                                             $days_remaining = floor((strtotime($row['lease_end']) - time()) / (60 * 60 * 24));
                                             
@@ -628,4 +628,5 @@ $vacant_properties = $property->getVacantProperties()->rowCount();
         });
     </script>
 </body>
+
 </html>
